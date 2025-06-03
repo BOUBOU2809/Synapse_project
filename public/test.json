@@ -1,0 +1,772 @@
+[
+    {
+        "id": 0,
+        "date": "2025-07-24 15:10:32",
+        "lieu": "Goncalves",
+        "commentaires": "Eaeummaximeasperioresmagninecessitatibusnisiut.",
+        "statut": {
+            "libelle": "sapiente",
+            "libelleCourt": "perspiciatis"
+        },
+        "categorie": {
+            "libelle": "ratione",
+            "libelleCourt": "suscipit"
+        },
+        "candidats": {
+            "nid": 629557,
+            "genre": {
+                "libelle": "minima",
+                "libelle_court": "sit"
+            },
+            "statut": {
+                "libelle": "minima",
+                "libelle_court": "sit"
+            },
+            "motifs": {
+                "libelle": "et",
+                "libelle_court": "voluptas"
+            },
+            "nom": "Hubert",
+            "prenom": "Margot",
+            "date_naissance": "2003-07-06",
+            "lieu_naissance": "Charlesboeuf",
+            "commentaires": "Sitharumutvelitutsitomnistenetur.",
+            "test_anglais": {
+                "date_passage": "2025-05-12",
+                "note_brute": 6
+            },
+            "test_sport": {
+                "date_passage": "2025-05-22",
+                "epreuves": {
+                    "code_epreuve_sportives": 13895277,
+                    "note_brute": 2,
+                    "cotation": 8
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "cum",
+                "date_passage": "2025-04-16",
+                "sous_tests": {
+                    "nom_sous_test": "quo",
+                    "resultats_bruts": {
+                        "nom_item": "ad",
+                        "valeur_response": "minima",
+                        "codage": 7
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "fuga",
+            "date_passage": "2025-05-24",
+            "sous_tests": {
+                "nom_sous_test": "distinctio",
+                "resultats_bruts": {
+                    "nom_item": "et",
+                    "valeur_response": "id",
+                    "codage": 19
+                }
+            }
+        }
+    },
+    {
+        "id": 1,
+        "date": "2025-08-20 19:38:28",
+        "lieu": "Leclercqdan",
+        "commentaires": "Suscipitmodiminusetutverolaboreid.",
+        "statut": {
+            "libelle": "sed",
+            "libelleCourt": "sapiente"
+        },
+        "categorie": {
+            "libelle": "asperiores",
+            "libelleCourt": "quasi"
+        },
+        "candidats": {
+            "nid": 553600,
+            "genre": {
+                "libelle": "asperiores",
+                "libelle_court": "quae"
+            },
+            "statut": {
+                "libelle": "asperiores",
+                "libelle_court": "quae"
+            },
+            "motifs": {
+                "libelle": "placeat",
+                "libelle_court": "iste"
+            },
+            "nom": "Gallet",
+            "prenom": "Hélène",
+            "date_naissance": "1999-03-28",
+            "lieu_naissance": "Riounec",
+            "commentaires": "Reiciendistemporaiurevoluptatumblanditiis.",
+            "test_anglais": {
+                "date_passage": "2025-04-26",
+                "note_brute": 9
+            },
+            "test_sport": {
+                "date_passage": "2025-04-08",
+                "epreuves": {
+                    "code_epreuve_sportives": 11456621,
+                    "note_brute": 16,
+                    "cotation": 0
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "impedit",
+                "date_passage": "2025-05-08",
+                "sous_tests": {
+                    "nom_sous_test": "veritatis",
+                    "resultats_bruts": {
+                        "nom_item": "impedit",
+                        "valeur_response": "maiores",
+                        "codage": 4
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "ut",
+            "date_passage": "2025-03-26",
+            "sous_tests": {
+                "nom_sous_test": "debitis",
+                "resultats_bruts": {
+                    "nom_item": "est",
+                    "valeur_response": "quos",
+                    "codage": 15
+                }
+            }
+        }
+    },
+    {
+        "id": 2,
+        "date": "2025-10-12 03:35:32",
+        "lieu": "Bouchet",
+        "commentaires": "Autautodioaperiamlaborumrerumminusnihil.",
+        "statut": {
+            "libelle": "pariatur",
+            "libelleCourt": "voluptas"
+        },
+        "categorie": {
+            "libelle": "eius",
+            "libelleCourt": "perferendis"
+        },
+        "candidats": {
+            "nid": 592923,
+            "genre": {
+                "libelle": "nobis",
+                "libelle_court": "aspernatur"
+            },
+            "statut": {
+                "libelle": "nobis",
+                "libelle_court": "aspernatur"
+            },
+            "motifs": {
+                "libelle": "doloribus",
+                "libelle_court": "iusto"
+            },
+            "nom": "Godard",
+            "prenom": "Marcel",
+            "date_naissance": "2004-10-06",
+            "lieu_naissance": "Durand-sur-Brunel",
+            "commentaires": "Seddignissimoscorporisquamdolormollitia.",
+            "test_anglais": {
+                "date_passage": "2025-04-28",
+                "note_brute": 11
+            },
+            "test_sport": {
+                "date_passage": "2025-04-22",
+                "epreuves": {
+                    "code_epreuve_sportives": 9570317,
+                    "note_brute": 9,
+                    "cotation": 4
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "dicta",
+                "date_passage": "2025-03-16",
+                "sous_tests": {
+                    "nom_sous_test": "quas",
+                    "resultats_bruts": {
+                        "nom_item": "earum",
+                        "valeur_response": "officia",
+                        "codage": 10
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "cumque",
+            "date_passage": "2025-05-23",
+            "sous_tests": {
+                "nom_sous_test": "sapiente",
+                "resultats_bruts": {
+                    "nom_item": "odit",
+                    "valeur_response": "incidunt",
+                    "codage": 13
+                }
+            }
+        }
+    },
+    {
+        "id": 3,
+        "date": "2025-11-21 02:11:24",
+        "lieu": "ValleeVille",
+        "commentaires": "Teneturquisvitaevoluptatibusvoluptatemvoluptasfaceresitrepellendus.",
+        "statut": {
+            "libelle": "accusamus",
+            "libelleCourt": "incidunt"
+        },
+        "categorie": {
+            "libelle": "ea",
+            "libelleCourt": "praesentium"
+        },
+        "candidats": {
+            "nid": 916775,
+            "genre": {
+                "libelle": "quisquam",
+                "libelle_court": "aspernatur"
+            },
+            "statut": {
+                "libelle": "quisquam",
+                "libelle_court": "aspernatur"
+            },
+            "motifs": {
+                "libelle": "totam",
+                "libelle_court": "ut"
+            },
+            "nom": "Martel",
+            "prenom": "Frédéric",
+            "date_naissance": "2000-08-14",
+            "lieu_naissance": "Blot",
+            "commentaires": "Quamenimperspiciatisdignissimoscorporisquamiurequis.",
+            "test_anglais": {
+                "date_passage": "2025-04-09",
+                "note_brute": 4
+            },
+            "test_sport": {
+                "date_passage": "2025-04-14",
+                "epreuves": {
+                    "code_epreuve_sportives": 39595447,
+                    "note_brute": 15,
+                    "cotation": 19
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "eum",
+                "date_passage": "2025-03-21",
+                "sous_tests": {
+                    "nom_sous_test": "et",
+                    "resultats_bruts": {
+                        "nom_item": "nihil",
+                        "valeur_response": "cumque",
+                        "codage": 15
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "sint",
+            "date_passage": "2025-03-25",
+            "sous_tests": {
+                "nom_sous_test": "mollitia",
+                "resultats_bruts": {
+                    "nom_item": "vel",
+                    "valeur_response": "consectetur",
+                    "codage": 13
+                }
+            }
+        }
+    },
+    {
+        "id": 4,
+        "date": "2025-11-12 11:57:17",
+        "lieu": "Baron",
+        "commentaires": "Laborevoluptateinciduntsitullamsintimpeditnulla.",
+        "statut": {
+            "libelle": "dicta",
+            "libelleCourt": "nihil"
+        },
+        "categorie": {
+            "libelle": "autem",
+            "libelleCourt": "est"
+        },
+        "candidats": {
+            "nid": 434228,
+            "genre": {
+                "libelle": "sed",
+                "libelle_court": "rem"
+            },
+            "statut": {
+                "libelle": "sed",
+                "libelle_court": "rem"
+            },
+            "motifs": {
+                "libelle": "aut",
+                "libelle_court": "quas"
+            },
+            "nom": "Nguyen",
+            "prenom": "Arthur",
+            "date_naissance": "2001-09-22",
+            "lieu_naissance": "Legernec",
+            "commentaires": "Quiarchitectoeaquemagniconsequaturillonumquam.",
+            "test_anglais": {
+                "date_passage": "2025-05-21",
+                "note_brute": 17
+            },
+            "test_sport": {
+                "date_passage": "2025-04-25",
+                "epreuves": {
+                    "code_epreuve_sportives": 81131284,
+                    "note_brute": 6,
+                    "cotation": 9
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "temporibus",
+                "date_passage": "2025-03-21",
+                "sous_tests": {
+                    "nom_sous_test": "molestiae",
+                    "resultats_bruts": {
+                        "nom_item": "ut",
+                        "valeur_response": "voluptatum",
+                        "codage": 4
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "amet",
+            "date_passage": "2025-03-08",
+            "sous_tests": {
+                "nom_sous_test": "et",
+                "resultats_bruts": {
+                    "nom_item": "aut",
+                    "valeur_response": "iste",
+                    "codage": 15
+                }
+            }
+        }
+    },
+    {
+        "id": 5,
+        "date": "2026-01-02 12:45:07",
+        "lieu": "Riviere",
+        "commentaires": "Repellatautmaioresreiciendisqui.",
+        "statut": {
+            "libelle": "at",
+            "libelleCourt": "ea"
+        },
+        "categorie": {
+            "libelle": "ut",
+            "libelleCourt": "est"
+        },
+        "candidats": {
+            "nid": 639976,
+            "genre": {
+                "libelle": "expedita",
+                "libelle_court": "molestiae"
+            },
+            "statut": {
+                "libelle": "expedita",
+                "libelle_court": "molestiae"
+            },
+            "motifs": {
+                "libelle": "beatae",
+                "libelle_court": "tenetur"
+            },
+            "nom": "Seguin",
+            "prenom": "Grégoire",
+            "date_naissance": "2000-03-06",
+            "lieu_naissance": "Maillarddan",
+            "commentaires": "Quisveritatisenimid.",
+            "test_anglais": {
+                "date_passage": "2025-04-29",
+                "note_brute": 5
+            },
+            "test_sport": {
+                "date_passage": "2025-04-02",
+                "epreuves": {
+                    "code_epreuve_sportives": 77158460,
+                    "note_brute": 3,
+                    "cotation": 14
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "sed",
+                "date_passage": "2025-05-04",
+                "sous_tests": {
+                    "nom_sous_test": "nesciunt",
+                    "resultats_bruts": {
+                        "nom_item": "dolore",
+                        "valeur_response": "alias",
+                        "codage": 12
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "earum",
+            "date_passage": "2025-04-24",
+            "sous_tests": {
+                "nom_sous_test": "a",
+                "resultats_bruts": {
+                    "nom_item": "incidunt",
+                    "valeur_response": "et",
+                    "codage": 0
+                }
+            }
+        }
+    },
+    {
+        "id": 6,
+        "date": "2026-01-14 17:38:36",
+        "lieu": "Peron",
+        "commentaires": "Etcumeamollitiarepellendus.",
+        "statut": {
+            "libelle": "libero",
+            "libelleCourt": "qui"
+        },
+        "categorie": {
+            "libelle": "ducimus",
+            "libelleCourt": "excepturi"
+        },
+        "candidats": {
+            "nid": 484749,
+            "genre": {
+                "libelle": "quia",
+                "libelle_court": "magnam"
+            },
+            "statut": {
+                "libelle": "quia",
+                "libelle_court": "magnam"
+            },
+            "motifs": {
+                "libelle": "minima",
+                "libelle_court": "optio"
+            },
+            "nom": "Regnier",
+            "prenom": "Laure",
+            "date_naissance": "2000-08-06",
+            "lieu_naissance": "Brunet-la-Forêt",
+            "commentaires": "Velrecusandaerepellendusomnisdelectus.",
+            "test_anglais": {
+                "date_passage": "2025-03-28",
+                "note_brute": 14
+            },
+            "test_sport": {
+                "date_passage": "2025-04-09",
+                "epreuves": {
+                    "code_epreuve_sportives": 11280569,
+                    "note_brute": 14,
+                    "cotation": 14
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "saepe",
+                "date_passage": "2025-03-09",
+                "sous_tests": {
+                    "nom_sous_test": "et",
+                    "resultats_bruts": {
+                        "nom_item": "harum",
+                        "valeur_response": "sit",
+                        "codage": 16
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "occaecati",
+            "date_passage": "2025-05-11",
+            "sous_tests": {
+                "nom_sous_test": "quas",
+                "resultats_bruts": {
+                    "nom_item": "nostrum",
+                    "valeur_response": "odit",
+                    "codage": 7
+                }
+            }
+        }
+    },
+    {
+        "id": 7,
+        "date": "2026-01-13 23:19:10",
+        "lieu": "Jacquet-les-Bains",
+        "commentaires": "Cumvoluptatemenimhicodiovoluptasdeserunt.",
+        "statut": {
+            "libelle": "esse",
+            "libelleCourt": "et"
+        },
+        "categorie": {
+            "libelle": "et",
+            "libelleCourt": "aliquam"
+        },
+        "candidats": {
+            "nid": 426293,
+            "genre": {
+                "libelle": "et",
+                "libelle_court": "eos"
+            },
+            "statut": {
+                "libelle": "et",
+                "libelle_court": "eos"
+            },
+            "motifs": {
+                "libelle": "corporis",
+                "libelle_court": "nihil"
+            },
+            "nom": "Breton",
+            "prenom": "Margaux",
+            "date_naissance": "2004-12-12",
+            "lieu_naissance": "Berthelotboeuf",
+            "commentaires": "Estexercitationemquiaetaccusantiumporroaliquameligendi.",
+            "test_anglais": {
+                "date_passage": "2025-05-17",
+                "note_brute": 4
+            },
+            "test_sport": {
+                "date_passage": "2025-04-06",
+                "epreuves": {
+                    "code_epreuve_sportives": 74761892,
+                    "note_brute": 1,
+                    "cotation": 4
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "corrupti",
+                "date_passage": "2025-03-17",
+                "sous_tests": {
+                    "nom_sous_test": "et",
+                    "resultats_bruts": {
+                        "nom_item": "et",
+                        "valeur_response": "laboriosam",
+                        "codage": 19
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "tempora",
+            "date_passage": "2025-05-15",
+            "sous_tests": {
+                "nom_sous_test": "enim",
+                "resultats_bruts": {
+                    "nom_item": "inventore",
+                    "valeur_response": "totam",
+                    "codage": -2
+                }
+            }
+        }
+    },
+    {
+        "id": 8,
+        "date": "2025-10-22 22:57:10",
+        "lieu": "Marechalboeuf",
+        "commentaires": "Fugiatcommodivoluptatemvoluptate.",
+        "statut": {
+            "libelle": "ratione",
+            "libelleCourt": "nihil"
+        },
+        "categorie": {
+            "libelle": "quis",
+            "libelleCourt": "voluptas"
+        },
+        "candidats": {
+            "nid": 299622,
+            "genre": {
+                "libelle": "eos",
+                "libelle_court": "harum"
+            },
+            "statut": {
+                "libelle": "eos",
+                "libelle_court": "harum"
+            },
+            "motifs": {
+                "libelle": "accusantium",
+                "libelle_court": "aut"
+            },
+            "nom": "Vasseur",
+            "prenom": "Margaud",
+            "date_naissance": "1995-06-13",
+            "lieu_naissance": "Lemaitre",
+            "commentaires": "Laborumaliasdignissimosutsimiliquecumque.",
+            "test_anglais": {
+                "date_passage": "2025-05-06",
+                "note_brute": 3
+            },
+            "test_sport": {
+                "date_passage": "2025-05-19",
+                "epreuves": {
+                    "code_epreuve_sportives": 17262495,
+                    "note_brute": 3,
+                    "cotation": 12
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "exercitationem",
+                "date_passage": "2025-05-20",
+                "sous_tests": {
+                    "nom_sous_test": "voluptas",
+                    "resultats_bruts": {
+                        "nom_item": "ipsam",
+                        "valeur_response": "ad",
+                        "codage": -9
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "et",
+            "date_passage": "2025-04-26",
+            "sous_tests": {
+                "nom_sous_test": "atque",
+                "resultats_bruts": {
+                    "nom_item": "itaque",
+                    "valeur_response": "consequatur",
+                    "codage": 1
+                }
+            }
+        }
+    },
+    {
+        "id": 9,
+        "date": "2026-01-07 16:32:44",
+        "lieu": "Lefebvre",
+        "commentaires": "Etvelrepellendusrerumeosquosodioenim.",
+        "statut": {
+            "libelle": "quia",
+            "libelleCourt": "nihil"
+        },
+        "categorie": {
+            "libelle": "at",
+            "libelleCourt": "nihil"
+        },
+        "candidats": {
+            "nid": 765960,
+            "genre": {
+                "libelle": "expedita",
+                "libelle_court": "repudiandae"
+            },
+            "statut": {
+                "libelle": "expedita",
+                "libelle_court": "repudiandae"
+            },
+            "motifs": {
+                "libelle": "laboriosam",
+                "libelle_court": "delectus"
+            },
+            "nom": "Duhamel",
+            "prenom": "Alain",
+            "date_naissance": "2001-04-10",
+            "lieu_naissance": "Gilletboeuf",
+            "commentaires": "Molestiaenobisestminuseamaximeet.",
+            "test_anglais": {
+                "date_passage": "2025-03-23",
+                "note_brute": 14
+            },
+            "test_sport": {
+                "date_passage": "2025-04-13",
+                "epreuves": {
+                    "code_epreuve_sportives": 69369256,
+                    "note_brute": 5,
+                    "cotation": 14
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "eum",
+                "date_passage": "2025-03-30",
+                "sous_tests": {
+                    "nom_sous_test": "blanditiis",
+                    "resultats_bruts": {
+                        "nom_item": "pariatur",
+                        "valeur_response": "reiciendis",
+                        "codage": 5
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "iure",
+            "date_passage": "2025-05-22",
+            "sous_tests": {
+                "nom_sous_test": "ullam",
+                "resultats_bruts": {
+                    "nom_item": "sunt",
+                    "valeur_response": "quaerat",
+                    "codage": 7
+                }
+            }
+        }
+    },
+    {
+        "id": 10,
+        "date": "2025-09-30 11:11:11",
+        "lieu": "Benoit",
+        "commentaires": "Voluptatesdebitisesseitaquesimilique.",
+        "statut": {
+            "libelle": "autem",
+            "libelleCourt": "hic"
+        },
+        "categorie": {
+            "libelle": "unde",
+            "libelleCourt": "consequuntur"
+        },
+        "candidats": {
+            "nid": 581403,
+            "genre": {
+                "libelle": "hic",
+                "libelle_court": "atque"
+            },
+            "statut": {
+                "libelle": "hic",
+                "libelle_court": "atque"
+            },
+            "motifs": {
+                "libelle": "animi",
+                "libelle_court": "minus"
+            },
+            "nom": "Potier",
+            "prenom": "Laetitia",
+            "date_naissance": "1997-01-24",
+            "lieu_naissance": "GuyonVille",
+            "commentaires": "Oditprovidentnecessitatibusmolestiaemodietliberout.",
+            "test_anglais": {
+                "date_passage": "2025-05-13",
+                "note_brute": 4
+            },
+            "test_sport": {
+                "date_passage": "2025-03-27",
+                "epreuves": {
+                    "code_epreuve_sportives": 67035179,
+                    "note_brute": 14,
+                    "cotation": 10
+                }
+            },
+            "test_tami_c": {
+                "nom_test": "voluptas",
+                "date_passage": "2025-03-28",
+                "sous_tests": {
+                    "nom_sous_test": "dicta",
+                    "resultats_bruts": {
+                        "nom_item": "animi",
+                        "valeur_response": "et",
+                        "codage": -8
+                    }
+                }
+            }
+        },
+        "test_tami_p": {
+            "nom_test": "sint",
+            "date_passage": "2025-04-05",
+            "sous_tests": {
+                "nom_sous_test": "voluptates",
+                "resultats_bruts": {
+                    "nom_item": "veritatis",
+                    "valeur_response": "perferendis",
+                    "codage": -1
+                }
+            }
+        }
+    }
+]

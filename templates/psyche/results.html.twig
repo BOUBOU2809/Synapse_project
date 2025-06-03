@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de recherche{% endblock %}
+{% block body %}
+
+    {{ include('psyche/nav.html.twig') }}
+
+    <a href="{{ path('app_step1') }}">
+        <button type="button" class="btn btn-light text-dark mx-5 my-4">
+            <i class="fa-solid fa-arrow-left px-3 py-2"></i>
+            Retour</button>
+    </a>
+
+    <h1 class="px-5 py-3">Résultats de recherches</h1>
+    <form method="POST" action="/step2">
+    <table class="table mx-5 table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Date de Session</th>
+                <th scope="col">Nombre de candidats</th>
+                <th scope="col">Motifs</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for session in sessions %}
+            {% if session.date>dateD and session.date<dateF %}
+                {% if session is not empty %}
+                <tr class="pe-auto">
+                    <td name="Session_date">{{ session.date | date('Y-m-d') }}</td>
+                    <input name="Session_date" value="{{ session.date | date('Y-m-d') }}" hidden/>
+
+                    <td>{{ session.candidats.nid | length}}</td>
+                    <input name="Nb_candidats" value="{{ session.candidats.nid | length}}" hidden/>
+
+                    <td>
+                        <div {{ stimulus_controller('hello') }} class="d-flex flex-row">
+                        <select id="{{ session.id }}"
+                                    class="form-select" {{ stimulus_action('hello', 'changement', 'change') }}>
+                                <option {{ stimulus_target('hello', 'optionSelectedDefault') }}
+                                        value="Choisissez votre motif" selected>Choisissez votre motif</option>
+                                <option {{ stimulus_target('hello', 'optionSelected') }}
+                                        value="{{ session.candidats.motifs['libelle']}}">
+                                    {{ session.candidats.motifs['libelle']}}</option>
+                                <input name="motif" hidden value="{{ session.candidats.motifs['libelle']}}"/>
+                            </select>
+                            <button type="submit"
+                                    class="btn btn-dark mx-5"
+                                    {{ stimulus_target('hello','selection') }} disabled>
+                                Importer </button>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    </form>
+{% endblock %}
