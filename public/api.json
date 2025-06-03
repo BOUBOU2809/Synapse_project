@@ -1,0 +1,418 @@
+{
+    "sessions": [
+      {
+        "id": 1,
+        "date": "2024-09-02 22:00:00",
+        "lieu": "Tours B°805",
+        "commentaires": "Ne pas utiliser le poste 5.",
+        "statut": {
+          "libelle": "Ouverte",
+          "libelle_court": "OVRT"
+        },
+        "categorie": {
+          "libelle": "Mixte complète",
+          "libelle_court": "Mixte"
+        },
+        "candidats": [
+          {
+            "nid": "1234567890",
+            "genre": {
+              "libelle": "Homme",
+              "libelle_court": "H"
+            },
+            "statut": {
+              "libelle": "VLD",
+              "libelle_court": "Validé"
+            },
+            "motifs": [
+              {
+                  "libelle": "Motif12",
+                  "libelle_court": "M1"
+              },
+              {
+                  "libelle": "Motif2",
+                  "libelle_court": "M2"
+              }
+            ],
+            "nom": "DURAND",
+            "prenom": "Michel",
+            "date_naissance": "1970-02-12",
+            "lieu_naissance": "Tours",
+            "commentaires": null,
+            "test_anglais": {
+                "date_passage": "2024-09-09",
+                "note_brute": 134
+            },
+            "test_sport": null,
+            "test_tami_c": {
+                "nom_test": "TamiC NouvelleG",
+                "date_passage": "2024-09-09",
+                "sous_tests": [
+                    {
+                        "nom_sous_test": "TamiC NouvelleG SousTest1",
+                        "resultats_bruts": [
+                            {
+                                "nom_item": "Item1",
+                                "valeur_reponse": "Réponse A",
+                                "codage": -2
+                            },
+                            {
+                                "nom_item": "Item1",
+                                "valeur_reponse": "Réponse B",
+                                "codage": 5
+                            },
+                            {
+                                "nom_item": "Item2",
+                                "valeur_reponse": "Réponse A",
+                                "codage": 1
+                            }
+                        ]
+                    },
+                    {
+                        "nom_sous_test": "TamiC NouvelleG SousTest2",
+                        "resultats_bruts": [
+                            {
+                                "nom_item": "Item4",
+                                "valeur_reponse": "Réponse A",
+                                "codage": -2
+                            },
+                            {
+                                "nom_item": "Item5",
+                                "valeur_reponse": "Réponse B",
+                                "codage": 5
+                            },
+                            {
+                                "nom_item": "Item6",
+                                "valeur_reponse": "Réponse A",
+                                "codage": 1
+                            }
+                        ]
+                    }
+                ]
+            },
+            "test_tami_p": {
+                "nom_test": "TamIP NouvelleG",
+                "date_passage": "2024-09-09",
+                "sous_tests": [
+                    {
+                        "nom_sous_test": "TamiP NouvelleG SousTest1",
+                        "resultats_bruts": [
+                            {
+                                "nom_item": "Item1",
+                                "valeur_reponse": "Réponse A",
+                                "codage": -2
+                            },
+                            {
+                                "nom_item": "Item1",
+                                "valeur_reponse": "Réponse B",
+                                "codage": 5
+                            },
+                            {
+                                "nom_item": "Item2",
+                                "valeur_reponse": "Réponse A",
+                                "codage": 1
+                            }
+                        ]
+                    },
+                    {
+                        "nom_sous_test": "TamiP NouvelleG SousTest2",
+                        "resultats_bruts": [
+                            {
+                                "nom_item": "Item4",
+                                "valeur_reponse": "Réponse A",
+                                "codage": -2
+                            },
+                            {
+                                "nom_item": "Item5",
+                                "valeur_reponse": "Réponse B",
+                                "codage": 5
+                            },
+                            {
+                                "nom_item": "Item6",
+                                "valeur_reponse": "Réponse A",
+                                "codage": 1
+                            }
+                        ]
+                    }
+                ]
+            }
+          },
+          {
+            "nid": "9876543210",
+            "genre": {
+              "libelle": "Femme",
+              "libelle_court": "F"
+            },
+             "statut": {
+              "libelle": "ABS",
+              "libelle_court": "Absent"
+            },
+            "motifs": [
+              {
+                  "libelle": "Pesonnelle navigant",
+                  "libelle_court": "M1"
+              }
+            ],
+            "nom": "DUPOND",
+            "prenom": "Jeanne",
+            "date_naissance": "1971-03-11",
+            "lieu_naissance": "Aix-en-Provence",
+            "commentaires": null,
+            "test_anglais": null,
+            "test_sport": {
+                "date_passage": "2024-12-29",
+                "epreuves": [
+                    {
+                        "code_epreuve_sportives": 1,
+                        "note_brute": 1,
+                        "cotation": 3
+                    },
+                    {
+                        "code_epreuve_sportives": 2,
+                        "note_brute": 2,
+                        "cotation": 2
+                    },
+                    {
+                        "code_epreuve_sportives": 3,
+                        "note_brute": 1,
+                        "cotation": 3
+                    }
+                ]
+            },
+            "test_tami_c": null,
+            "test_tami_p": null
+          }
+        ]
+      },
+      {
+      "id": 1,
+      "date": "2025-08-09 23:45:00",
+      "lieu": "Tours B°805",
+      "commentaires": "Ne pas utiliser le poste 5.",
+      "statut": {
+        "libelle": "Ouverte",
+        "libelle_court": "OVRT"
+      },
+      "categorie": {
+        "libelle": "Mixte complète",
+        "libelle_court": "Mixte"
+      },
+      "candidats": [
+        {
+          "nid": "1234567890",
+          "genre": {
+            "libelle": "Homme",
+            "libelle_court": "H"
+          },
+          "statut": {
+            "libelle": "VLD",
+            "libelle_court": "Validé"
+          },
+          "motifs": [
+            {
+              "libelle": "Motif1",
+              "libelle_court": "M1"
+            },
+            {
+              "libelle": "Motif2",
+              "libelle_court": "M2"
+            }
+          ],
+          "nom": "DURAND",
+          "prenom": "Michel",
+          "date_naissance": "1970-02-12",
+          "lieu_naissance": "Tours",
+          "commentaires": null,
+          "test_anglais": {
+            "date_passage": "2024-09-09",
+            "note_brute": 134
+          },
+          "test_sport": null,
+          "test_tami_c": {
+            "nom_test": "TamiC NouvelleG",
+            "date_passage": "2024-09-09",
+            "sous_tests": [
+              {
+                "nom_sous_test": "TamiC NouvelleG SousTest1",
+                "resultats_bruts": [
+                  {
+                    "nom_item": "Item1",
+                    "valeur_reponse": "Réponse A",
+                    "codage": -2
+                  },
+                  {
+                    "nom_item": "Item1",
+                    "valeur_reponse": "Réponse B",
+                    "codage": 5
+                  },
+                  {
+                    "nom_item": "Item2",
+                    "valeur_reponse": "Réponse A",
+                    "codage": 1
+                  }
+                ]
+              },
+              {
+                "nom_sous_test": "TamiC NouvelleG SousTest2",
+                "resultats_bruts": [
+                  {
+                    "nom_item": "Item4",
+                    "valeur_reponse": "Réponse A",
+                    "codage": -2
+                  },
+                  {
+                    "nom_item": "Item5",
+                    "valeur_reponse": "Réponse B",
+                    "codage": 5
+                  },
+                  {
+                    "nom_item": "Item6",
+                    "valeur_reponse": "Réponse A",
+                    "codage": 1
+                  }
+                ]
+              }
+            ]
+          },
+          "test_tami_p": {
+            "nom_test": "TamIP NouvelleG",
+            "date_passage": "2024-09-09",
+            "sous_tests": [
+              {
+                "nom_sous_test": "TamiP NouvelleG SousTest1",
+                "resultats_bruts": [
+                  {
+                    "nom_item": "Item1",
+                    "valeur_reponse": "Réponse A",
+                    "codage": -2
+                  },
+                  {
+                    "nom_item": "Item1",
+                    "valeur_reponse": "Réponse B",
+                    "codage": 5
+                  },
+                  {
+                    "nom_item": "Item2",
+                    "valeur_reponse": "Réponse A",
+                    "codage": 1
+                  }
+                ]
+              },
+              {
+                "nom_sous_test": "TamiP NouvelleG SousTest2",
+                "resultats_bruts": [
+                  {
+                    "nom_item": "Item4",
+                    "valeur_reponse": "Réponse A",
+                    "codage": -2
+                  },
+                  {
+                    "nom_item": "Item5",
+                    "valeur_reponse": "Réponse B",
+                    "codage": 5
+                  },
+                  {
+                    "nom_item": "Item6",
+                    "valeur_reponse": "Réponse A",
+                    "codage": 1
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "nid": "9876543210",
+          "genre": {
+            "libelle": "Femme",
+            "libelle_court": "F"
+          },
+          "statut": {
+            "libelle": "ABS",
+            "libelle_court": "Absent"
+          },
+          "motifs": [
+            {
+              "libelle": "Pilote d'avion",
+              "libelle_court": "M1"
+            }
+          ],
+          "nom": "DUPOND",
+          "prenom": "Jeanne",
+          "date_naissance": "1971-03-11",
+          "lieu_naissance": "Aix-en-Provence",
+          "commentaires": null,
+          "test_anglais": null,
+          "test_sport": {
+            "date_passage": "2024-12-29",
+            "epreuves": [
+              {
+                "code_epreuve_sportives": 1,
+                "note_brute": 1,
+                "cotation": 3
+              },
+              {
+                "code_epreuve_sportives": 2,
+                "note_brute": 2,
+                "cotation": 2
+              },
+              {
+                "code_epreuve_sportives": 3,
+                "note_brute": 1,
+                "cotation": 3
+              }
+            ]
+          },
+          "test_tami_c": null,
+          "test_tami_p": null
+        },
+        {
+          "nid": "9876543210",
+          "genre": {
+            "libelle": "Femme",
+            "libelle_court": "F"
+          },
+          "statut": {
+            "libelle": "ABS",
+            "libelle_court": "Absent"
+          },
+          "motifs": [
+            {
+              "libelle": "Pilote d'avion",
+              "libelle_court": "M1"
+            }
+          ],
+          "nom": "DUPOND",
+          "prenom": "Jeanne",
+          "date_naissance": "1971-03-11",
+          "lieu_naissance": "Aix-en-Provence",
+          "commentaires": null,
+          "test_anglais": null,
+          "test_sport": {
+            "date_passage": "2024-12-29",
+            "epreuves": [
+              {
+                "code_epreuve_sportives": 1,
+                "note_brute": 1,
+                "cotation": 3
+              },
+              {
+                "code_epreuve_sportives": 2,
+                "note_brute": 2,
+                "cotation": 2
+              },
+              {
+                "code_epreuve_sportives": 3,
+                "note_brute": 1,
+                "cotation": 3
+              }
+            ]
+          },
+          "test_tami_c": null,
+          "test_tami_p": null
+        }
+      ]
+      }
+    ],
+  "name": ""
+}
