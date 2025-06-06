@@ -12,7 +12,6 @@
     </a>
 
     <h1 class="px-5 py-3">Résultats de recherches</h1>
-    <form method="POST" action="/step2">
     <table class="table mx-5 table-hover">
         <thead>
             <tr>
@@ -24,25 +23,25 @@
         </thead>
         <tbody>
         {% for session in sessions %}
-            {% if session.date>dateD and session.date<dateF %}
+        <form method="POST" action="/step1">
+        {% if session.date>dateD and session.date<dateF %}
                 {% if session is not empty %}
                 <tr class="pe-auto">
+                    <input name="id" value="{{ session.id }}" hidden/>
+
                     <td name="Session_date">{{ session.date | date('Y-m-d') }}</td>
-                    <input name="Session_date" value="{{ session.date | date('Y-m-d') }}" hidden/>
 
                     <td>{{ session.candidats.nid | length}}</td>
-                    <input name="Nb_candidats" value="{{ session.candidats.nid | length}}" hidden/>
 
                     <td>
                         <div {{ stimulus_controller('hello') }} class="d-flex flex-row">
-                        <select id="{{ session.id }}"
+                        <select name="session_choice" id="{{ session.id }}"
                                     class="form-select" {{ stimulus_action('hello', 'changement', 'change') }}>
                                 <option {{ stimulus_target('hello', 'optionSelectedDefault') }}
                                         value="Choisissez votre motif" selected>Choisissez votre motif</option>
                                 <option {{ stimulus_target('hello', 'optionSelected') }}
                                         value="{{ session.candidats.motifs['libelle']}}">
                                     {{ session.candidats.motifs['libelle']}}</option>
-                                <input name="motif" hidden value="{{ session.candidats.motifs['libelle']}}"/>
                             </select>
                             <button type="submit"
                                     class="btn btn-dark mx-5"
@@ -55,8 +54,8 @@
                     <p>{{ message }}</p>
                 {% endif %}
             {% endif %}
+        </form>
         {% endfor %}
         </tbody>
     </table>
-    </form>
 {% endblock %}

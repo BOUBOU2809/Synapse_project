@@ -13,7 +13,7 @@ class ProcessusTypeForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void{
         $builder
-            ->add('Nommer', ChoiceType::class, [
+            ->add('Nom_du_processus_evaluation', ChoiceType::class, [
                 'attr' => [
                     "placeholder" => "Nommer votre processus",
                     'class' => 'form-control'

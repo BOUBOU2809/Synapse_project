@@ -9,9 +9,10 @@ export default class extends Controller {
      * @param {object} event
      */
     changement(event){
-        if(this.optionSelectedDefaultTarget) {
-           this.selectionTarget.disabled = true
+        if(this.optionSelectedTarget == null) {
+            this.selectionTarget.setAttribute("disabled", "")
         }
         this.selectionTarget.removeAttribute("disabled")
+
     }
 }
