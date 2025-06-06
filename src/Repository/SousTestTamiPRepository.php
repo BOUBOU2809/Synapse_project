@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\SousTestC;
+use App\Entity\SousTestTamiP;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<SousTestC>
+ * @extends ServiceEntityRepository<SousTestTamiP>
  */
-class SousTestCRepository extends ServiceEntityRepository
+class SousTestTamiPRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SousTestC::class);
+        parent::__construct($registry, SousTestTamiP::class);
     }
 
     //    /**
-    //     * @return SousTestC[] Returns an array of SousTestC objects
+    //     * @return SousTestTamiP[] Returns an array of SousTestTamiP objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class SousTestCRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?SousTestC
+    //    public function findOneBySomeField($value): ?SousTestTamiP
     //    {
     //        return $this->createQueryBuilder('s')
     //            ->andWhere('s.exampleField = :val')

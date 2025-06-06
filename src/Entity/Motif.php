@@ -25,11 +25,11 @@ class Motif
      * @var Collection<int, Candidat>
      */
     #[ORM\ManyToMany(targetEntity: Candidat::class, inversedBy: 'motifs')]
-    private Collection $candidat;
+    private Collection $candidats;
 
     public function __construct()
     {
-        $this->candidat = new ArrayCollection();
+        $this->candidats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -66,21 +66,21 @@ class Motif
      */
     public function getCandidat(): Collection
     {
-        return $this->candidat;
+        return $this->candidats;
     }
 
-    public function addCandidat(Candidat $candidat): static
+    public function addCandidat(Candidat $candidats): static
     {
-        if (!$this->candidat->contains($candidat)) {
-            $this->candidat->add($candidat);
+        if (!$this->candidats->contains($candidats)) {
+            $this->candidats->add($candidats);
         }
 
         return $this;
     }
 
-    public function removeCandidat(Candidat $candidat): static
+    public function removeCandidat(Candidat $candidats): static
     {
-        $this->candidat->removeElement($candidat);
+        $this->candidats->removeElement($candidats);
 
         return $this;
     }
