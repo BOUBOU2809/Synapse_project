@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\ResultatsBrutsC;
+use App\Entity\ResultatsSousTestTamiC;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ResultatsBrutsC>
+ * @extends ServiceEntityRepository<ResultatsSousTestTamiC>
  */
-class ResultatsBrutsCRepository extends ServiceEntityRepository
+class ResultatsSousTestTamiCRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ResultatsBrutsC::class);
+        parent::__construct($registry, ResultatsSousTestTamiC::class);
     }
 
     //    /**
-    //     * @return ResultatsBrutsC[] Returns an array of ResultatsBrutsC objects
+    //     * @return ResultatsSousTestTamiC[] Returns an array of ResultatsSousTestTamiC objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class ResultatsBrutsCRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?ResultatsBrutsC
+    //    public function findOneBySomeField($value): ?ResultatsSousTestTamiC
     //    {
     //        return $this->createQueryBuilder('r')
     //            ->andWhere('r.exampleField = :val')

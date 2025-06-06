@@ -24,12 +24,12 @@ class StatutCandidat
     /**
      * @var Collection<int, Candidat>
      */
-    #[ORM\OneToMany(targetEntity: Candidat::class, mappedBy: 'statutCandidat')]
-    private Collection $candidat;
+    #[ORM\OneToMany(targetEntity: Candidat::class, mappedBy: 'statut')]
+    private Collection $candidats;
 
     public function __construct()
     {
-        $this->candidat = new ArrayCollection();
+        $this->candidats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -66,25 +66,25 @@ class StatutCandidat
      */
     public function getCandidat(): Collection
     {
-        return $this->candidat;
+        return $this->candidats;
     }
 
-    public function addCandidat(Candidat $candidat): static
+    public function addCandidat(Candidat $candidats): static
     {
-        if (!$this->candidat->contains($candidat)) {
-            $this->candidat->add($candidat);
-            $candidat->setStatutCandidat($this);
+        if (!$this->candidats->contains($candidats)) {
+            $this->candidats->add($candidats);
+            $candidats->setStatutCandidat($this);
         }
 
         return $this;
     }
 
-    public function removeCandidat(Candidat $candidat): static
+    public function removeCandidat(Candidat $candidats): static
     {
-        if ($this->candidat->removeElement($candidat)) {
+        if ($this->candidats->removeElement($candidats)) {
             // set the owning side to null (unless already changed)
-            if ($candidat->getStatutCandidat() === $this) {
-                $candidat->setStatutCandidat(null);
+            if ($candidats->getStatutCandidat() === $this) {
+                $candidats->setStatutCandidat(null);
             }
         }
 

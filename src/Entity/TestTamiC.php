@@ -15,28 +15,24 @@ class TestTamiC
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $nom_test = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTime $date_passage = null;
 
-    /**
-     * @var Collection<int, Candidat>
-     */
-    #[ORM\OneToMany(targetEntity: Candidat::class, mappedBy: 'testTamiC')]
-    private Collection $candidat;
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Candidat $candidats = null;
 
     /**
-     * @var Collection<int, SousTestC>
+     * @var Collection<int, SousTestTamiC>
      */
-    #[ORM\OneToMany(targetEntity: SousTestC::class, mappedBy: 'test_tami_c')]
-    private Collection $sousTestCs;
+    #[ORM\OneToMany(targetEntity: SousTestTamiC::class, mappedBy: 'test_tami_c')]
+    private Collection $sous_tests;
 
     public function __construct()
     {
-        $this->candidat = new ArrayCollection();
-        $this->sousTestCs = new ArrayCollection();
+        $this->sous_tests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -49,7 +45,7 @@ class TestTamiC
         return $this->nom_test;
     }
 
-    public function setNomTest(string $nom_test): static
+    public function setNomTest(?string $nom_test): static
     {
         $this->nom_test = $nom_test;
 
@@ -61,67 +57,49 @@ class TestTamiC
         return $this->date_passage;
     }
 
-    public function setDatePassage(\DateTime $date_passage): static
+    public function setDatePassage(?\DateTime $date_passage): static
     {
         $this->date_passage = $date_passage;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Candidat>
-     */
-    public function getCandidat(): Collection
+    public function getCandidats(): ?Candidat
     {
-        return $this->candidat;
+        return $this->candidats;
     }
 
-    public function addCandidat(Candidat $candidat): static
+    public function setCandidats(?Candidat $candidats): static
     {
-        if (!$this->candidat->contains($candidat)) {
-            $this->candidat->add($candidat);
-            $candidat->setTestTamiC($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCandidat(Candidat $candidat): static
-    {
-        if ($this->candidat->removeElement($candidat)) {
-            // set the owning side to null (unless already changed)
-            if ($candidat->getTestTamiC() === $this) {
-                $candidat->setTestTamiC(null);
-            }
-        }
+        $this->candidats = $candidats;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, SousTestC>
+     * @return Collection<int, SousTestTamiC>
      */
-    public function getSousTestCs(): Collection
+    public function getSousTests(): Collection
     {
-        return $this->sousTestCs;
+        return $this->sous_tests;
     }
 
-    public function addSousTestC(SousTestC $sousTestC): static
+    public function addSousTest(SousTestTamiC $sousTest): static
     {
-        if (!$this->sousTestCs->contains($sousTestC)) {
-            $this->sousTestCs->add($sousTestC);
-            $sousTestC->setTestTamiC($this);
+        if (!$this->sous_tests->contains($sousTest)) {
+            $this->sous_tests->add($sousTest);
+            $sousTest->setTestTamiC($this);
         }
 
         return $this;
     }
 
-    public function removeSousTestC(SousTestC $sousTestC): static
+    public function removeSousTest(SousTestTamiC $sousTest): static
     {
-        if ($this->sousTestCs->removeElement($sousTestC)) {
+        if ($this->sous_tests->removeElement($sousTest)) {
             // set the owning side to null (unless already changed)
-            if ($sousTestC->getTestTamiC() === $this) {
-                $sousTestC->setTestTamiC(null);
+            if ($sousTest->getTestTamiC() === $this) {
+                $sousTest->setTestTamiC(null);
             }
         }
 

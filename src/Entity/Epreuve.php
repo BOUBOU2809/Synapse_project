@@ -2,28 +2,27 @@
 
 namespace App\Entity;
 
-use App\Repository\EpreuvesRepository;
+use App\Repository\EpreuveRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EpreuvesRepository::class)]
-class Epreuves
+#[ORM\Entity(repositoryClass: EpreuveRepository::class)]
+class Epreuve
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $code_epreuves_sportives = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $code_epreuve_sportive = null;
 
-    #[ORM\Column]
-    private ?int $note_brute = null;
+    #[ORM\Column(nullable: true)]
+    private ?float $note_brute = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $cotation = null;
 
     #[ORM\ManyToOne(inversedBy: 'epreuves')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?TestSport $test_sport = null;
 
     public function getId(): ?int
@@ -31,24 +30,24 @@ class Epreuves
         return $this->id;
     }
 
-    public function getCodeEpreuvesSportives(): ?int
+    public function getCodeEpreuveSportive(): ?int
     {
-        return $this->code_epreuves_sportives;
+        return $this->code_epreuve_sportive;
     }
 
-    public function setCodeEpreuvesSportives(int $code_epreuves_sportives): static
+    public function setCodeEpreuveSportive(?int $code_epreuve_sportive): static
     {
-        $this->code_epreuves_sportives = $code_epreuves_sportives;
+        $this->code_epreuve_sportive = $code_epreuve_sportive;
 
         return $this;
     }
 
-    public function getNoteBrute(): ?int
+    public function getNoteBrute(): ?float
     {
         return $this->note_brute;
     }
 
-    public function setNoteBrute(int $note_brute): static
+    public function setNoteBrute(?float $note_brute): static
     {
         $this->note_brute = $note_brute;
 
@@ -60,7 +59,7 @@ class Epreuves
         return $this->cotation;
     }
 
-    public function setCotation(int $cotation): static
+    public function setCotation(?int $cotation): static
     {
         $this->cotation = $cotation;
 

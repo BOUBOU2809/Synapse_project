@@ -15,24 +15,20 @@ class TestSport
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTime $date_passage = null;
 
-    /**
-     * @var Collection<int, Candidat>
-     */
-    #[ORM\OneToMany(targetEntity: Candidat::class, mappedBy: 'testSport')]
-    private Collection $candidat;
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Candidat $candidats = null;
 
     /**
-     * @var Collection<int, Epreuves>
+     * @var Collection<int, Epreuve>
      */
-    #[ORM\OneToMany(targetEntity: Epreuves::class, mappedBy: 'test_sport')]
+    #[ORM\OneToMany(targetEntity: Epreuve::class, mappedBy: 'test_sport')]
     private Collection $epreuves;
 
     public function __construct()
     {
-        $this->candidat = new ArrayCollection();
         $this->epreuves = new ArrayCollection();
     }
 
@@ -46,52 +42,34 @@ class TestSport
         return $this->date_passage;
     }
 
-    public function setDatePassage(\DateTime $date_passage): static
+    public function setDatePassage(?\DateTime $date_passage): static
     {
         $this->date_passage = $date_passage;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Candidat>
-     */
-    public function getCandidat(): Collection
+    public function getCandidats(): ?Candidat
     {
-        return $this->candidat;
+        return $this->candidats;
     }
 
-    public function addCandidat(Candidat $candidat): static
+    public function setCandidats(?Candidat $candidats): static
     {
-        if (!$this->candidat->contains($candidat)) {
-            $this->candidat->add($candidat);
-            $candidat->setTestSport($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCandidat(Candidat $candidat): static
-    {
-        if ($this->candidat->removeElement($candidat)) {
-            // set the owning side to null (unless already changed)
-            if ($candidat->getTestSport() === $this) {
-                $candidat->setTestSport(null);
-            }
-        }
+        $this->candidats = $candidats;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Epreuves>
+     * @return Collection<int, Epreuve>
      */
     public function getEpreuves(): Collection
     {
         return $this->epreuves;
     }
 
-    public function addEpreufe(Epreuves $epreufe): static
+    public function addEpreufe(Epreuve $epreufe): static
     {
         if (!$this->epreuves->contains($epreufe)) {
             $this->epreuves->add($epreufe);
@@ -101,7 +79,7 @@ class TestSport
         return $this;
     }
 
-    public function removeEpreufe(Epreuves $epreufe): static
+    public function removeEpreufe(Epreuve $epreufe): static
     {
         if ($this->epreuves->removeElement($epreufe)) {
             // set the owning side to null (unless already changed)

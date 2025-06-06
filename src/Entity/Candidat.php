@@ -16,7 +16,7 @@ class Candidat
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $NID = null;
+    private ?int $nid = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
@@ -25,10 +25,10 @@ class Candidat
     private ?string $prenom = null;
 
     #[ORM\Column]
-    private $birth_date = null;
+    private ?\DateTime $date_naissance = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $birth_place = null;
+    private ?string $lieu_naissance = null;
 
     #[ORM\Column(length: 255)]
     private ?string $commentaires = null;
@@ -37,35 +37,19 @@ class Candidat
     #[ORM\JoinColumn(nullable: true)]
     private ?Session $session = null;
 
-    #[ORM\ManyToOne(inversedBy: 'candidat')]
+    #[ORM\ManyToOne(inversedBy: 'candidats')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Genre $genre = null;
 
     /**
      * @var Collection<int, Motif>
      */
-    #[ORM\ManyToMany(targetEntity: Motif::class, mappedBy: 'candidat')]
+    #[ORM\ManyToMany(targetEntity: Motif::class, mappedBy: 'candidats')]
     private Collection $motifs;
 
-    #[ORM\ManyToOne(inversedBy: 'candidat')]
+    #[ORM\ManyToOne(inversedBy: 'candidats')]
     #[ORM\JoinColumn(nullable: true)]
     private ?StatutCandidat $statutCandidat = null;
-
-    #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?TestAnglais $testAnglais = null;
-
-    #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?TestSport $testSport = null;
-
-    #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?TestTamiC $testTamiC = null;
-
-    #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?TestTamiP $testTamiP = null;
 
     public function __construct()
     {
@@ -77,14 +61,14 @@ class Candidat
         return $this->id;
     }
 
-    public function getNID(): ?int
+    public function getNid(): ?int
     {
-        return $this->NID;
+        return $this->nid;
     }
 
-    public function setNID(int $NID): static
+    public function setNid(int $nid): static
     {
-        $this->NID = $NID;
+        $this->nid = $nid;
 
         return $this;
     }
@@ -113,26 +97,26 @@ class Candidat
         return $this;
     }
 
-    public function getBirthDate(): ?string
+    public function getDateNaissance(): ?\DateTime
     {
-        return $this->birth_date;
+        return $this->date_naissance;
     }
 
-    public function setBirthDate(string $birth_date): static
+    public function setDateNaissance(\DateTime $date_naissance): static
     {
-        $this->birth_date = $birth_date;
+        $this->date_naissance = $date_naissance;
 
         return $this;
     }
 
-    public function getBirthPlace(): ?string
+    public function getLieuNaissance(): ?string
     {
-        return $this->birth_place;
+        return $this->lieu_naissance;
     }
 
-    public function setBirthPlace(string $birth_place): static
+    public function setLieuNaissance(string $lieu_naissance): static
     {
-        $this->birth_place = $birth_place;
+        $this->lieu_naissance = $lieu_naissance;
 
         return $this;
     }
@@ -208,54 +192,6 @@ class Candidat
     public function setStatutCandidat(?StatutCandidat $statutCandidat): static
     {
         $this->statutCandidat = $statutCandidat;
-
-        return $this;
-    }
-
-    public function getTestAnglais(): ?TestAnglais
-    {
-        return $this->testAnglais;
-    }
-
-    public function setTestAnglais(?TestAnglais $testAnglais): static
-    {
-        $this->testAnglais = $testAnglais;
-
-        return $this;
-    }
-
-    public function getTestSport(): ?TestSport
-    {
-        return $this->testSport;
-    }
-
-    public function setTestSport(?TestSport $testSport): static
-    {
-        $this->testSport = $testSport;
-
-        return $this;
-    }
-
-    public function getTestTamiC(): ?TestTamiC
-    {
-        return $this->testTamiC;
-    }
-
-    public function setTestTamiC(?TestTamiC $testTamiC): static
-    {
-        $this->testTamiC = $testTamiC;
-
-        return $this;
-    }
-
-    public function getTestTamiP(): ?TestTamiP
-    {
-        return $this->testTamiP;
-    }
-
-    public function setTestTamiP(?TestTamiP $testTamiP): static
-    {
-        $this->testTamiP = $testTamiP;
 
         return $this;
     }
