@@ -25,7 +25,7 @@ class Candidat
     private ?string $prenom = null;
 
     #[ORM\Column]
-    private ?\DateTime $birth_date = null;
+    private $birth_date = null;
 
     #[ORM\Column(length: 255)]
     private ?string $birth_place = null;
@@ -34,11 +34,11 @@ class Candidat
     private ?string $commentaires = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidats')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Session $session = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Genre $genre = null;
 
     /**
@@ -48,23 +48,23 @@ class Candidat
     private Collection $motifs;
 
     #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?StatutCandidat $statutCandidat = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?TestAnglais $testAnglais = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?TestSport $testSport = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?TestTamiC $testTamiC = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidat')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?TestTamiP $testTamiP = null;
 
     public function __construct()
@@ -113,12 +113,12 @@ class Candidat
         return $this;
     }
 
-    public function getBirthDate(): ?\DateTime
+    public function getBirthDate(): ?string
     {
         return $this->birth_date;
     }
 
-    public function setBirthDate(\DateTime $birth_date): static
+    public function setBirthDate(string $birth_date): static
     {
         $this->birth_date = $birth_date;
 

@@ -21,7 +21,8 @@
 
     {{ form_start(form) }}
     <div class="d-flex flex-row px-5">
-            {{ form_row(form.Nommer) }}
+        <p hidden>{{ app.session.get('id') }}</p>
+        {{ form_row(form.Nom_du_processus_evaluation) }}
             {{ form_row(form.Suivant) }}
     </div>
     {{ form_end(form) }}

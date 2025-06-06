@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="psyche" uuid="98b06d3b-c309-45df-bd1f-3628d0733344">
+    <data-source source="LOCAL" name="psyche" uuid="ae3ffbde-14aa-4aa6-898d-76fea5847ea6">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\saidt\PhpstormProjects\Synapse\var\psyche.sqlite</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\saidt\PhpstormProjects\Synapse_project\var\psyche.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
