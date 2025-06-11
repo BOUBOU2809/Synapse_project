@@ -4,20 +4,21 @@ namespace App\DataFixtures;
 
 use App\Entity\Candidat;
 use App\Entity\Categorie;
-use App\Entity\Epreuves;
+use App\Entity\Epreuve;
 use App\Entity\Genre;
 use App\Entity\Motif;
-use App\Entity\ResultatsBrutsC;
-use App\Entity\ResultatsBrutsP;
+use App\Entity\ResultatsSousTestTamiC;
+use App\Entity\ResultatsSousTestTamiP;
 use App\Entity\Session;
-use App\Entity\SousTestC;
-use App\Entity\SousTestP;
+use App\Entity\SousTestTamiC;
+use App\Entity\SousTestTamiP;
 use App\Entity\Statut;
 use App\Entity\StatutCandidat;
 use App\Entity\TestAnglais;
 use App\Entity\TestSport;
 use App\Entity\TestTamiC;
 use App\Entity\TestTamiP;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
@@ -30,93 +31,94 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i <= 10; $i++) {
             $sessions[$i] = new Session();
-            $sessions[$i]->setId($i);
             $sessions[$i]->setDate($faker->dateTimeBetween('now', '+8 month'));
             $sessions[$i]->setLieu($faker->city);
             $sessions[$i]->setCommentaires($faker->sentences(1, true));
 
-            $date = $sessions[$i]->getDate();
-            $date_converted = date_format($date, 'Y-m-d H:i:s');
+            $sessionDate = $sessions[$i]->getDate();
+            $sessionDateConverted = date_format($sessionDate, 'Y-m-d H:i:s');
 
             $candidates[$i] = new Candidat();
-            $candidates[$i]->setNID($faker->randomNumber(6, true));
+            $candidates[$i]->setNid($faker->randomNumber(6, true));
             $candidates[$i]->setNom($faker->lastName);
             $candidates[$i]->setPrenom($faker->firstName);
-            $candidates[$i]->setBirthDate($faker->dateTimeBetween('-30 years', '-20 years'));
-            $candidates[$i]->setBirthPlace($faker->city);
+            $candidates[$i]->setDateNaissance($faker->dateTimeBetween('-30 years', '-20 years'));
+            $candidates[$i]->setLieuNaissance($faker->city);
             $candidates[$i]->setCommentaires($faker->sentences(1, true));
 
-            $date = $candidates[$i]->getBirthDate();
-            $birth_date_converted = date_format($date, 'Y-m-d');
-
+            $BirthDate = $candidates[$i]->getDateNaissance();
+            $BirthDateConverted = date_format($BirthDate, 'Y-m-d');
 
             $status[$i] = new Statut();
             $status[$i]->setLibelle($faker->word);
             $status[$i]->setLibelleCourt($faker->word);
 
-            $category[$i] = new Categorie();
-            $category[$i]->setLibelle($faker->word);
-            $category[$i]->setLibelleCourt($faker->word);
+            $categories[$i] = new Categorie();
+            $categories[$i]->setLibelle($faker->word);
+            $categories[$i]->setLibelleCourt($faker->word);
 
-            $genre[$i] = new Genre();
-            $genre[$i]->setLibelle($faker->word);
-            $genre[$i]->setLibelleCourt($faker->word);
+            $genres[$i] = new Genre();
+            $genres[$i]->setLibelle($faker->word);
+            $genres[$i]->setLibelleCourt($faker->word);
 
-            $status_candidate[$i] = new StatutCandidat();
-            $status_candidate[$i]->setLibelle($faker->word);
-            $status_candidate[$i]->setLibelleCourt($faker->word);
+            $statusCandidates[$i] = new StatutCandidat();
+            $statusCandidates[$i]->setLibelle($faker->word);
+            $statusCandidates[$i]->setLibelleCourt($faker->word);
 
-            $motif[$i] = new Motif();
-            $motif[$i]->setLibelle($faker->word);
-            $motif[$i]->setLibelleCourt($faker->word);
+            $motifs[$i] = new Motif();
+            $motifs[$i]->setLibelle($faker->word);
+            $motifs[$i]->setLibelleCourt($faker->word);
 
-            $test_english[$i] = new TestAnglais();
-            $test_english[$i]->setNoteBrute($faker->numberBetween(0, 20));
-            $test_english[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
-            $english_date = $test_english[$i]->getDatePassage();
-            $english_date_passage_converted = date_format($english_date, 'Y-m-d');
+            $englishTest[$i] = new TestAnglais();
+            $englishTest[$i]->setNoteBrute($faker->numberBetween(0, 20));
+            $englishTest[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
 
-            $test_sport[$i] = new TestSport();
-            $test_sport[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
-            $sport_date = $test_sport[$i]->getDatePassage();
-            $sport_date_passage_converted = date_format($sport_date, 'Y-m-d');
+            $englishTestDate = $englishTest[$i]->getDatePassage();
+            $englishTestDateConverted = date_format($englishTestDate, 'Y-m-d');
 
-            $epreuves[$i] = new Epreuves();
-            $epreuves[$i]->setCodeEpreuvesSportives($faker->ean8);
-            $epreuves[$i]->setNoteBrute($faker->numberBetween(0, 20));
-            $epreuves[$i]->setCotation($faker->numberBetween(0, 20));
+            $sportTest[$i] = new TestSport();
+            $sportTest[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
 
-            $test_tami_c[$i] = new TestTamiC();
-            $test_tami_c[$i]->setNomTest($faker->word);
-            $test_tami_c[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
-            $tami_c_date = $test_tami_c[$i]->getDatePassage();
-            $tami_c_date_passage_converted = date_format($tami_c_date, 'Y-m-d');
+            $sportTestDate = $sportTest[$i]->getDatePassage();
+            $sportTestDateConverted = date_format($sportTestDate, 'Y-m-d');
 
-            $sous_test_c[$i] = new SousTestC();
-            $sous_test_c[$i]->setNomSousTest($faker->word);
+            $tests[$i] = new Epreuve();
+            $tests[$i]->setCodeEpreuveSportive($faker->ean8);
+            $tests[$i]->setNoteBrute($faker->numberBetween(0, 20));
+            $tests[$i]->setCotation($faker->numberBetween(0, 20));
 
-            $test_tami_p[$i] = new TestTamiP();
-            $test_tami_p[$i]->setNomTest($faker->word);
-            $test_tami_p[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
-            $tami_p_date = $test_tami_p[$i]->getDatePassage();
-            $tami_p_date_passage_converted = date_format($tami_p_date, 'Y-m-d');
+            $testTamiC[$i] = new TestTamiC();
+            $testTamiC[$i]->setNomTest($faker->word);
+            $testTamiC[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
 
-            $sous_test_p[$i] = new SousTestP();
-            $sous_test_p[$i]->setNomSousTest($faker->word);
+            $testTamiCDate = $testTamiC[$i]->getDatePassage();
+            $testTamiCDateConverted = date_format($testTamiCDate, 'Y-m-d');
 
-            $results_brute_p[$i] = new ResultatsBrutsP();
-            $results_brute_p[$i]->setNomItem($faker->word);
-            $results_brute_p[$i]->setValeurResponse($faker->word);
-            $results_brute_p[$i]->setCodage($faker->numberBetween(-10, 20));
+            $sousTestTamiC[$i] = new SousTestTamiC();
+            $sousTestTamiC[$i]->setNomSousTest($faker->word);
 
-            $results_brute_c[$i] = new ResultatsBrutsC();
-            $results_brute_c[$i]->setNomItem($faker->word);
-            $results_brute_c[$i]->setValeurResponse($faker->word);
-            $results_brute_c[$i]->setCodage($faker->numberBetween(-10, 20));
+            $testTamiP[$i] = new TestTamiP();
+            $testTamiP[$i]->setNomTest($faker->word);
+            $testTamiP[$i]->setDatePassage($faker->dateTimeBetween('-3 month'));
+            $testTamiPDate = $testTamiP[$i]->getDatePassage();
+            $testTamiPDateConverted = date_format($testTamiPDate, 'Y-m-d');
+
+            $sousTestTamiP[$i] = new SousTestTamiP();
+            $sousTestTamiP[$i]->setNomSousTest($faker->word);
+
+            $resultsSousTestTamiP[$i] = new ResultatsSousTestTamiP();
+            $resultsSousTestTamiP[$i]->setNomItem($faker->word);
+            $resultsSousTestTamiP[$i]->setValeurResponse($faker->word);
+            $resultsSousTestTamiP[$i]->setCodage($faker->numberBetween(-10, 20));
+
+            $resultsSousTestTamiC[$i] = new ResultatsSousTestTamiC();
+            $resultsSousTestTamiC[$i]->setNomItem($faker->word);
+            $resultsSousTestTamiC[$i]->setValeurResponse($faker->word);
+            $resultsSousTestTamiC[$i]->setCodage($faker->numberBetween(-10, 20));
 
             $sessions = [
-                "id" => $sessions[$i]->getId(),
-                "date" => $date_converted,
+                "id" => $i,
+                "date" => $sessionDateConverted,
                 "lieu" => $sessions[$i]->getLieu(),
                 "commentaires" => $sessions[$i]->getCommentaires(),
                 "statut" => [
@@ -124,77 +126,76 @@ class AppFixtures extends Fixture
                     "libelleCourt" => $status[$i]->getLibelleCourt(),
                 ],
                 "categorie" => [
-                    "libelle" => $category[$i]->getLibelle(),
-                    "libelleCourt" => $category[$i]->getLibelleCourt(),
+                    "libelle" => $categories[$i]->getLibelle(),
+                    "libelleCourt" => $categories[$i]->getLibelleCourt(),
                 ],
                 "candidats" => [
                     "nid" => $candidates[$i]->getNID(),
                     "genre" => [
-                        "libelle" => $genre[$i]->getLibelle(),
-                        "libelle_court" => $genre[$i]->getLibelleCourt(),
+                        "libelle" => $genres[$i]->getLibelle(),
+                        "libelle_court" => $genres[$i]->getLibelleCourt(),
                     ],
                     "statut" => [
-                        "libelle" => $genre[$i]->getLibelle(),
-                        "libelle_court" => $genre[$i]->getLibelleCourt(),
+                        "libelle" => $genres[$i]->getLibelle(),
+                        "libelle_court" => $genres[$i]->getLibelleCourt(),
                     ],
                     "motifs" => [
-                        "libelle" => $motif[$i]->getLibelle(),
-                        "libelle_court" => $motif[$i]->getLibelleCourt(),
+                        "libelle" => $motifs[$i]->getLibelle(),
+                        "libelle_court" => $motifs[$i]->getLibelleCourt(),
                     ],
                     "nom" => $candidates[$i]->getNom(),
                     "prenom" => $candidates[$i]->getPrenom(),
-                    "date_naissance" => $birth_date_converted,
-                    "lieu_naissance" => $candidates[$i]->getBirthPlace(),
+                    "date_naissance" => $BirthDateConverted,
+                    "lieu_naissance" => $candidates[$i]->getLieuNaissance(),
                     "commentaires" => $candidates[$i]->getCommentaires(),
                     "test_anglais" => [
-                        "date_passage" => $english_date_passage_converted,
-                        "note_brute" => $test_english[$i]->getNoteBrute(),
+                        "date_passage" => $englishTestDateConverted,
+                        "note_brute" => $englishTest[$i]->getNoteBrute(),
                     ],
                     "test_sport" => [
-                        "date_passage" => $sport_date_passage_converted,
+                        "date_passage" => $sportTestDateConverted,
                         "epreuves" => [
-                            "code_epreuve_sportives" => $epreuves[$i]->getCodeEpreuvesSportives(),
-                            "note_brute" => $epreuves[$i]->getNoteBrute(),
-                            "cotation" => $epreuves[$i]->getCotation(),
+                            "code_epreuve_sportives" => $tests[$i]->getCodeEpreuveSportive(),
+                            "note_brute" => $tests[$i]->getNoteBrute(),
+                            "cotation" => $tests[$i]->getCotation(),
                         ]
                     ],
                     "test_tami_c" => [
-                        "nom_test" => $test_tami_c[$i]->getNomTest(),
-                        "date_passage" => $tami_c_date_passage_converted,
+                        "nom_test" => $testTamiC[$i]->getNomTest(),
+                        "date_passage" => $testTamiCDateConverted,
                         "sous_tests" => [
-                            "nom_sous_test" => $sous_test_c[$i]->getNomSousTest(),
+                            "nom_sous_test" => $sousTestTamiC[$i]->getNomSousTest(),
                             "resultats_bruts" => [
-                                "nom_item" => $results_brute_c[$i]->getNomItem(),
-                                "valeur_response" => $results_brute_c[$i]->getValeurResponse(),
-                                "codage" => $results_brute_c[$i]->getCodage(),
+                                "nom_item" => $resultsSousTestTamiC[$i]->getNomItem(),
+                                "valeur_response" => $resultsSousTestTamiC[$i]->getValeurResponse(),
+                                "codage" => $resultsSousTestTamiC[$i]->getCodage(),
                             ]
                         ]
-                    ]
-                ],
-                "test_tami_p" => [
-                    "nom_test" => $test_tami_p[$i]->getNomTest(),
-                    "date_passage" => $tami_p_date_passage_converted,
-                    "sous_tests" => [
-                        "nom_sous_test" => $sous_test_p[$i]->getNomSousTest(),
-                        "resultats_bruts" => [
-                            "nom_item" => $results_brute_p[$i]->getNomItem(),
-                            "valeur_response" => $results_brute_p[$i]->getValeurResponse(),
-                            "codage" => $results_brute_p[$i]->getCodage(),
-                        ]
                     ],
-
+                    "test_tami_p" => [
+                        "nom_test" => $testTamiP[$i]->getNomTest(),
+                        "date_passage" => $testTamiPDateConverted,
+                        "sous_tests" => [
+                            "nom_sous_test" => $sousTestTamiP[$i]->getNomSousTest(),
+                            "resultats_bruts" => [
+                                "nom_item" => $resultsSousTestTamiP[$i]->getNomItem(),
+                                "valeur_response" => $resultsSousTestTamiP[$i]->getValeurResponse(),
+                                "codage" => $resultsSousTestTamiP[$i]->getCodage(),
+                            ]
+                        ],
+                    ]
                 ]
             ];
 
             $json = $sessions;
 
-            $old_save = json_decode(file_get_contents("./public/test.json"), true) ?? [];
-            array_push($old_save, $json);
-            $save = $old_save;
+            $oldSave = json_decode(file_get_contents("./public/test.json"), true) ?? [];
+            array_push($oldSave, $json);
+            $save = $oldSave;
 
-            $encoded_data = json_encode($save, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            $encodedData = json_encode($save, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-            if (file_put_contents("./public/test.json", $encoded_data)) {
+            if (file_put_contents("./public/test.json", $encodedData)) {
                 echo "Session n° " . $i . " ajoutée avec succès \n";
             } else {
                 echo "Echec de l'ajout de la session n° " . $i . " \n";

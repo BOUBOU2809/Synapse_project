@@ -39,9 +39,16 @@ class Session
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
+    /**
+     * @var Collection<int, Iteration>
+     */
+    #[ORM\ManyToMany(targetEntity: Iteration::class, mappedBy: 'session')]
+    private Collection $iterations;
+
     public function __construct()
     {
         $this->candidats = new ArrayCollection();
+        $this->iterations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -135,6 +142,33 @@ class Session
     public function setCategorie(?Categorie $categorie): static
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Iteration>
+     */
+    public function getIterations(): Collection
+    {
+        return $this->iterations;
+    }
+
+    public function addIteration(Iteration $iteration): static
+    {
+        if (!$this->iterations->contains($iteration)) {
+            $this->iterations->add($iteration);
+            $iteration->addSession($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIteration(Iteration $iteration): static
+    {
+        if ($this->iterations->removeElement($iteration)) {
+            $iteration->removeSession($this);
+        }
 
         return $this;
     }
