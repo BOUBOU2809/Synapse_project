@@ -2,12 +2,26 @@
 
 namespace App\Controller;
 use App\Entity\Candidat;
+use App\Entity\Categorie;
+use App\Entity\Epreuve;
+use App\Entity\Genre;
+use App\Entity\Iteration;
+use App\Entity\Motif;
+use App\Entity\ProcessusEvaluation;
+use App\Entity\ResultatsSousTestTamiC;
+use App\Entity\ResultatsSousTestTamiP;
 use App\Entity\Session;
+use App\Entity\SousTestTamiC;
+use App\Entity\SousTestTamiP;
+use App\Entity\Statut;
+use App\Entity\StatutCandidat;
+use App\Entity\TestAnglais;
+use App\Entity\TestSport;
+use App\Entity\TestTamiC;
+use App\Entity\TestTamiP;
 use App\Form\IterationTypeForm;
 use App\Form\ProcessusTypeForm;
 use App\Form\PsycheTypeForm;
-use DateTime;
-use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +30,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class PsycheController extends AbstractController
 {
-    private ? array $data_table = null;
-
-    #[Route('/step1', name: 'app_step1')]
+    #[Route('/step1', name: 'app_step_1')]
     public function Step1(Request $request): Response
     {
         $form = $this->createForm(PsycheTypeForm::class);
@@ -28,8 +40,8 @@ final class PsycheController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $date = $form->getData();
-            $dateD = $date['dateD']->format('Y-m-d');
-            $dateF = $date['dateF']->format('Y-m-d');
+            $beginningDate = $date['dateD']->format('Y-m-d');
+            $endingDate = $date['dateF']->format('Y-m-d');
 
             $file = "test.json";
             $file = file_get_contents($file, true);
@@ -37,21 +49,22 @@ final class PsycheController extends AbstractController
 
             return $this->render('psyche/results.html.twig', [
                 "sessions" => $obj,
-                "dateD" => $dateD,
-                "dateF" => $dateF,
+                "dateD" => $beginningDate,
+                "dateF" => $endingDate,
                 "message" => "Aucun résultat sur la plage de date indiqué",
             ]);
         }
-        if($request->isMethod('POST')) {
-            $session_choice = $request->request->get('id');
+
+        if ($request->isMethod('POST')) {
+            $sessionChoice = $request->request->get('id');
 
             $file = "test.json";
             $file = file_get_contents($file, true);
             $obj = json_decode($file, true);
 
-            $session->set('data_base', $obj[$session_choice]);
+            $session->set('data', $obj[$sessionChoice]);
 
-            return $this->redirectToRoute('app_step2');
+            return $this->redirectToRoute('app_step_2');
         }
 
         return $this->render('psyche/index.html.twig', [
@@ -59,7 +72,7 @@ final class PsycheController extends AbstractController
         ]);
     }
 
-    #[Route('/step2', name: 'app_step2')]
+    #[Route('/step2', name: 'app_step_2')]
     public function Step2(Request $request): Response
     {
         $session = $request->getSession();
@@ -68,19 +81,18 @@ final class PsycheController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $data = $form->getData();
-            $session->set('data_base_2', $data);
-            return $this->redirectToRoute('app_step3');
+            $session->set('data2', $data);
+
+            return $this->redirectToRoute('app_step_3');
         }
         return $this->render('psyche/step2.html.twig', [
             'form'=>$form
         ]);
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     */
-    #[Route('/step3', name: 'app_step3')]
+    #[Route('/step3', name: 'app_step_3')]
     public function Step3(EntityManagerInterface $manager, Request $request): Response
     {
         $session = $request->getSession();
@@ -89,31 +101,189 @@ final class PsycheController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $data = $form->getData();
-            $session->set('data_base_3', $data);
+            $session->set('data3', $data);
 
-            $Session = new Candidat();
-            $test = $session->get('data_base');
+            // Récupération des contenues des différentes varibles issues de la session
 
-            $Session->setCommentaires($test['candidats']['commentaires']);
-            $Session->setBirthPlace($test['candidats']['lieu_naissance']);
-            $Session->setBirthDate($test['candidats']['date_naissance']);
-            $Session->setNom($test['candidats']['nom']);
-            $Session->setPrenom($test['candidats']['prenom']);
-            $Session->setNID($test['candidats']['nid']);
+            $data = $session->get('data');
+            $data2 = $session->get('data2');
+            $data3 = $session->get('data3');
 
-            $manager->persist($Session);
+            // Envoie des données stockée en session vers la base de donnée
+
+            // Création des objets entités
+            $status = new Statut();
+            $categories = new Categorie();
+            $genres = new Genre();
+            $statusCandidates = new StatutCandidat();
+            $sessions = new Session();
+            $candidates = new Candidat();
+            $motifs = new Motif();
+            $englishTest = new TestAnglais();
+
+            $sportTest = new TestSport();
+            $tests = new Epreuve();
+
+            $tamiCTest = new TestTamiC();
+            $tamiCSousTest = new SousTestTamiC();
+            $tamiCSousTestResults = new ResultatsSousTestTamiC();
+
+            $tamiPTest = new TestTamiP();
+            $tamiPSousTest = new SousTestTamiP();
+            $tamiPSousTestResults = new ResultatsSousTestTamiP();
+
+            $processusEvaluation = new processusEvaluation();
+            $iteration = new Iteration();
+
+            // Statut
+            $status->setLibelle($data['statut']['libelle']);
+            $status->setLibelleCourt($data['statut']['libelleCourt']);
+
+            // Categories
+            $categories->setLibelle($data['categorie']['libelle']);
+            $categories->setLibelleCourt($data['categorie']['libelleCourt']);
+
+            // Genre
+            $genres->setLibelle($data['candidats']['genre']['libelle']);
+            $genres->setLibelleCourt($data['candidats']['genre']['libelle_court']);
+
+            // Statut du Candidat
+            $statusCandidates->setLibelle($data['candidats']['statut']['libelle']);
+            $statusCandidates->setLibelleCourt($data['candidats']['statut']['libelle_court']);
+
+            // Motifs
+            $motifs->setLibelle($data['candidats']['motifs']['libelle']);
+            $motifs->setLibelleCourt($data['candidats']['motifs']['libelle_court']);
+
+            //Test d'Anglais
+            $date3 = $data['candidats']['test_anglais']['date_passage'];
+            $englishTestDate = date_create_from_format('Y-m-d', $date3);
+
+            $englishTest->setDatePassage($englishTestDate);
+            $englishTest->setNoteBrute($data['candidats']['test_anglais']['note_brute']);
+            $englishTest->setCandidats($candidates);
+
+            //Test de Sport
+            $date4 = $data['candidats']['test_sport']['date_passage'];
+            $sportTestDate = date_create_from_format('Y-m-d', $date4);
+
+            $sportTest->setDatePassage($sportTestDate);
+            $sportTest->setCandidats($candidates);
+            $tests->setTestSport($sportTest);
+            $tests->setCodeEpreuveSportive($data['candidats']['test_sport']['epreuves']['code_epreuve_sportives']);
+            $tests->setNoteBrute($data['candidats']['test_sport']['epreuves']['note_brute']);
+            $tests->setCotation($data['candidats']['test_sport']['epreuves']['cotation']);
+
+            //Test de Tami C
+            $date5 = $data['candidats']['test_tami_c']['date_passage'];
+            $tamiCTestDate = date_create_from_format('Y-m-d', $date5);
+
+            $tamiCTest->setNomTest($data['candidats']['test_tami_c']['nom_test']);
+            $tamiCTest->setDatePassage($tamiCTestDate);
+            $tamiCTest->setCandidats($candidates);
+
+            $tamiCSousTest->setTestTamiC($tamiCTest);
+            $tamiCSousTest->setNomSousTest($data['candidats']['test_tami_c']['sous_tests']['nom_sous_test']);
+
+            $tamiCSousTestResults->setSousTests($tamiCSousTest);
+            $tamiCSousTestResults->setNomItem($data['candidats']['test_tami_c']['sous_tests']['resultats_bruts']['nom_item']);
+            $tamiCSousTestResults->setCodage($data['candidats']['test_tami_c']['sous_tests']['resultats_bruts']['codage']);
+            $tamiCSousTestResults->setValeurResponse($data['candidats']['test_tami_c']['sous_tests']['resultats_bruts']['valeur_response']);
+
+            // Test de Tami P
+            $date6 = $data['candidats']['test_tami_p']['date_passage'];
+            $tamiPTestDate = date_create_from_format('Y-m-d', $date6);
+
+            $tamiPTest->setDatePassage($tamiPTestDate);
+            $tamiPTest->setCandidats($candidates);
+            $tamiPTest->setNomTest($data['candidats']['test_tami_p']['nom_test']);
+
+            $tamiPSousTest->setTestTamiP($tamiPTest);
+            $tamiPSousTest->setNomSousTest($data['candidats']['test_tami_p']['sous_tests']['nom_sous_test']);
+
+            $tamiPSousTestResults->setSousTests($tamiPSousTest);
+            $tamiPSousTestResults->setCodage($data['candidats']['test_tami_p']['sous_tests']['resultats_bruts']['codage']);
+            $tamiPSousTestResults->setValeurResponse($data['candidats']['test_tami_p']['sous_tests']['resultats_bruts']['valeur_response']);
+            $tamiPSousTestResults->setNomItem($data['candidats']['test_tami_p']['sous_tests']['resultats_bruts']['nom_item']);
+
+            // Sessions
+            $date2 = $data['date'];
+            $sessionsDate = date_create_from_format('Y-m-d H:i:s', $date2); // Conversion de la date de type string en format DateTime
+
+            $sessions->setDate($sessionsDate);
+            $sessions->setLieu($data['lieu']);
+            $sessions->setCommentaires($data['commentaires']);
+            $sessions->setStatut($status);
+            $sessions->setCategorie($categories);
+
+            // Candidats
+            $date = $data['candidats']['date_naissance'];
+            $birthDate = date_create_from_format('Y-m-d', $date); // Conversion de la date de type string en format DateTime
+
+            $candidates->setCommentaires($data['candidats']['commentaires']);
+            $candidates->setLieuNaissance($data['candidats']['lieu_naissance']);
+            $candidates->setDateNaissance($birthDate);
+            $candidates->setNom($data['candidats']['nom']);
+            $candidates->setPrenom($data['candidats']['prenom']);
+            $candidates->setNid($data['candidats']['nid']);
+            $candidates->setSession($sessions);
+            $candidates->setGenre($genres);
+            $candidates->setStatutCandidat($statusCandidates);
+
+            $processusEvaluation->setNomProcessus($data2['Nom_du_processus_evaluation']);
+            $iteration->setLabel($data3['libelle']);
+            $iteration->setStartDate($data3['Date_de_debut']);
+            $iteration->setEndDate($data3['Date_de_fin']);
+            $iteration->setDecisionDate($data3['Date_de_commission']);
+            $iteration->setProcessusEvaluation($processusEvaluation);
+
+            // Envoie des données vers la base de donnée
+            $manager->persist($status);
+            $manager->persist($categories);
+            $manager->persist($genres);
+            $manager->persist($statusCandidates);
+            $manager->persist($motifs);
             $manager->flush();
 
-            if(!($session->get('data_base_3'))) {
+            $manager->persist($sessions);
+            $manager->flush();
+
+            $manager->persist($candidates);
+            $manager->flush();
+
+            $manager->persist($englishTest);
+            //
+            $manager->persist($sportTest);
+            $manager->persist($tests);
+            //
+            $manager->persist($tamiCTest);
+            $manager->persist($tamiCSousTest);
+            $manager->persist($tamiCSousTestResults);
+            //
+            $manager->persist($tamiPTest);
+            $manager->persist($tamiPSousTest);
+            $manager->persist($tamiPSousTestResults);
+            //
+            $manager->persist($processusEvaluation);
+            $manager->persist($iteration);
+
+            $manager->flush();
+
+            if(!($session->get('data3'))) {
                 return $this->render('psyche/message.html.twig', [
-                    'couleur'=>'text-danger',
-                    'message'=> 'Echec'
+                    'style'=>'text-danger fa-solid fa-circle-xmark display-1 mb-5',
+                    'title'=> 'Echec de l\'import de données.',
+                    'message'=>'L\'import de données depuis l\'outil PSYCHE a échoué.',
+                    'message2'=>'Cliquez sur le bouton suivant pour réessayer'
                 ]);
             } else {
                 return $this->render('psyche/message.html.twig', [
-                    'couleur'=>'text-success',
-                    'message'=> 'vous venez d\' importer avec succès les données depuis Psyché',
+                    'style'=>'text-success fa-solid fa-circle-check display-1 mb-5',
+                    'title'=> 'Import de données réussi.',
+                    'message'=>'L\' import de donnée depuis l\'outil PSYCHE a réussi.',
+                    'message2'=> 'Cliquez sur le bouton suivant pour consulter vos sessions',
                 ]);
             }
         }

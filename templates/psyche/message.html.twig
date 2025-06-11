@@ -4,5 +4,11 @@
 {% block body %}
     {{ include('psyche/nav.html.twig') }}
 
-    <p class="{{ couleur }}">{{ message }}</p>
+    <div class="text-center" id="message">
+        <i class=" {{ style }} "></i>
+        <h1 class="mb-4">{{ title }}</h1>
+        <p class="mb-0">{{ message }}</p>
+        <p class="mt-0 mb-4">{{ message2 }}</p>
+        <a class="w-auto" href="{{ path('app_step_1') }}"><button class="w-auto btn btn-dark">Consultez mes sessions</button></a>
+    </div>
 {% endblock %}
