@@ -30,18 +30,22 @@
                     <input name="id" value="{{ session.id }}" hidden/>
 
                     <td name="Session_date">{{ session.date | date('Y-m-d') }}</td>
-
-                    <td>{{ session.candidats.nid | length}}</td>
-
+                    <td>{{ session.candidats| length}}</td>
                     <td>
                         <div {{ stimulus_controller('hello') }} class="d-flex flex-row">
-                        <select name="session_choice" id="{{ session.id }}"
+                        <select name="motif_choice" id="{{ session.id }}"
                                     class="form-select" {{ stimulus_action('hello', 'changement', 'change') }}>
                                 <option {{ stimulus_target('hello', 'optionSelectedDefault') }}
                                         value="Choisissez votre motif" selected>Choisissez votre motif</option>
-                                <option {{ stimulus_target('hello', 'optionSelected') }}
-                                        value="{{ session.candidats.motifs['libelle']}}">
-                                    {{ session.candidats.motifs['libelle']}}</option>
+
+                            {% for candidat in session.candidats %}
+                                {% for motif in candidat.motifs %}
+                                    <label hidden name="Libelle">Libelle</label>
+                                    <option {{ stimulus_target('hello', 'optionSelected') }}
+                                        value="{{ motif['libelle'] }} {{ motif['libelle_court'] }}" name="libelle"> {{motif['libelle']}}</option>
+                                {% endfor %}
+                            {% endfor %}
+
                             </select>
                             <button type="submit"
                                     class="btn btn-dark mx-5"
