@@ -11,10 +11,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class IterationTypeForm extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Selection_iteration', ChoiceType::class, [
+            ->add('selectedIteration', ChoiceType::class, [
                 'label' => false,
                 'required' => true,
                 'choices' => [
@@ -27,15 +27,15 @@ class IterationTypeForm extends AbstractType
                 'label'=>'Libellé',
                 'required' => true,
             ])
-            -> add('Date_de_debut', DateType::class, [
+            -> add('beginningDate', DateType::class, [
                 'label'=>'Date de début',
                 'required' => true,
             ])
-            -> add('Date_de_fin', DateType::class, [
+            -> add('endingDate', DateType::class, [
                 'label'=>'Date de fin',
                 'required' => true,
             ])
-            -> add('Date_de_commission', DateType::class, [
+            -> add('commissionDate', DateType::class, [
                 'attr' => [
                     'class'=>'form-control',
                     'data-action'=> 'click->input#input_disabled',
@@ -47,9 +47,10 @@ class IterationTypeForm extends AbstractType
                 'label'=>'Date de commission',
                 'required' => true,
             ])
-            ->add('Enregister', SubmitType::class, [
+            ->add('Save', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-dark my-3'],
                 'row_attr' => ['class' => 'col d-flex flex-row-reverse align-items-end'],
+                'label' => 'Enregistrer',
             ]);
 
     }

@@ -28,14 +28,14 @@ class Session
     /**
      * @var Collection<int, Candidat>
      */
-    #[ORM\OneToMany(targetEntity: Candidat::class, mappedBy: 'session')]
+    #[ORM\OneToMany(targetEntity: Candidat::class, mappedBy: 'session', cascade: ['persist'])]
     private Collection $candidats;
 
-    #[ORM\ManyToOne(inversedBy: 'session')]
+    #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'session')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Statut $statut = null;
 
-    #[ORM\ManyToOne(inversedBy: 'session')]
+    #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'session')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 

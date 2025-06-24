@@ -29,12 +29,12 @@
     {{ form_start(form) }}
     <div class="d-flex flex-row" {{ stimulus_controller('input') }}>
         <div class="mx-5 w-100">
-            {{ form_label(form.Selection_iteration) }}
-            <select name="{{ field_name(form.Selection_iteration) }}"
+            {{ form_label(form.selectedIteration) }}
+            <select name="{{ field_name(form.selectedIteration) }}"
                     class="form-control"
                     {{ stimulus_action('input', 'choice_disabled', 'change') }} {{ stimulus_target('input', 'choice_selected') }}>
                     <option value="Séléctionner votre itération" selected>Séléctionner votre itération</option>
-                {% for option, value in field_choices(form.Selection_iteration) %}
+                {% for option, value in field_choices(form.selectedIteration) %}
                     <option value="{{ value }}">{{ option }}</option>
                 {% endfor %}
             </select>
@@ -51,29 +51,29 @@
 
                 <div class="d-flex flex-row">
                     <div class="flex-fill me-3 my-3">
-                        {{ form_label(form.Date_de_debut) }}
-                        <input name="{{ field_name(form.Date_de_debut) }}"
-                               value="{{ field_value(form.Date_de_debut) }}"
+                        {{ form_label(form.beginningDate) }}
+                        <input name="{{ field_name(form.beginningDate) }}"
+                               value="{{ field_value(form.beginningDate) }}"
                                class="form-control" type="date" {{ stimulus_action('input', 'input_disabled', 'change') }}
                                 {{ stimulus_target('input', 'input_date_debut_disabled') }}>
                     </div>
                     <div class="flex-fill ms-3 my-3">
-                        {{ form_label(form.Date_de_fin) }}
-                        <input name="{{ field_name(form.Date_de_fin) }}"
-                               value="{{ field_value(form.Date_de_fin) }}"
+                        {{ form_label(form.endingDate) }}
+                        <input name="{{ field_name(form.endingDate) }}"
+                               value="{{ field_value(form.endingDate) }}"
                                class="form-control" type="date" {{ stimulus_action('input', 'input_disabled', 'change') }}
                                 {{ stimulus_target('input', 'input_date_fin_disabled') }}>
                     </div>
                 </div>
                 <div class="mb-3">
-                    {{ form_label(form.Date_de_commission) }}
-                    <input name="{{ field_name(form.Date_de_commission) }}"
-                           value="{{ field_value(form.Date_de_commission) }}"
+                    {{ form_label(form.commissionDate) }}
+                    <input name="{{ field_name(form.commissionDate) }}"
+                           value="{{ field_value(form.commissionDate) }}"
                            class="form-control" type="date" {{ stimulus_action('input', 'input_disabled', 'change') }}
                             {{ stimulus_target('input', 'input_date_commission_disabled') }}>
                 </div>
             </div>
-            {{ form_row(form.Enregister) }}
+            {{ form_row(form.Save) }}
         </div>
     </div>
     {{ form_end(form) }}
