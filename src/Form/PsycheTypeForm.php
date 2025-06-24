@@ -13,23 +13,24 @@ class PsycheTypeForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dateD', DateType::class, [
+            ->add('beginningDate', DateType::class, [
                 'label' => 'Date de Début',
                 'required' => true,
                 'attr' => ['class' => 'form-control'],
                 'widget' => 'single_text',
                 'row_attr' => ['class' => 'py-3 col'],
                 ])
-            ->add('dateF', DateType::class, [
+            ->add('endingDate', DateType::class, [
                 'label' => 'Date de Fin',
                 'required' => true,
                 'attr' => ['class' => 'form-control'],
                 'widget' => 'single_text',
                 'row_attr' => ['class' => 'py-3 col'],
                 ])
-            ->add('Chercher', SubmitType::class, [
+            ->add('Search', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-dark my-3'],
                 'row_attr' => ['class' => 'col d-flex flex-row-reverse align-items-end'],
+                'label'=> 'Rechercher',
             ])
         ;
     }

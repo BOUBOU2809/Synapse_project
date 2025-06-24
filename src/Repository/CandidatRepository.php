@@ -31,13 +31,12 @@ class CandidatRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Candidat
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        public function findCandidatesByNid(int $nid): ? array
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere('c.nid = :nid')
+                ->setParameter('nid', $nid)
+                ->getQuery()
+                ->getResult();
+        }
 }

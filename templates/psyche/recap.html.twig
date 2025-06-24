@@ -10,7 +10,7 @@
             Retour</button>
     </a>
     <p class="px-5 pt-4 fw-bold text-lg-start">Récapitulatif</p>
-    <h1 class="px-5">{{ data2 }}</h1>
+    <h1 class="px-5">{{ processName }}</h1>
     <p class="px-5">Veuillez vérifier la véracité de ces informations avant de les enregistrer</p>
 
     <div class="d-flex flex-row mt-5">
@@ -18,40 +18,40 @@
             <h5 class="mb-4 fw-bold">Itération du processus</h5>
             <div class="mb-2">
                 <label class="form-label">Libelle</label>
-                <input name="{{ data3.libelle }}" value="{{ data3.libelle }}" class="form-control" disabled/>
+                <input name="{{ iteration.libelle }}" value="{{ iteration.libelle }}" class="form-control" disabled/>
             </div>
             <div class="d-flex flex-row">
                 <div class="mb-2 me-3">
                     <label class="form-label">Date de début</label>
-                    <input name="{{ data3.Date_de_debut | date('Y-m-d')}}"
-                           value="{{ data3.Date_de_debut | date('Y-m-d')}}"
+                    <input name="{{ iteration.beginningDate | date('Y-m-d')}}"
+                           value="{{ iteration.beginningDate | date('Y-m-d')}}"
                            class="form-control" disabled/>
                 </div>
                 <div class="mb-2 ms-3">
                     <label class="form-label">Date de fin</label>
-                    <input name="{{ data3.Date_de_fin | date('Y-m-d')}}"
-                           value="{{ data3.Date_de_fin | date('Y-m-d')}}"
+                    <input name="{{ iteration.endingDate | date('Y-m-d')}}"
+                           value="{{ iteration.endingDate | date('Y-m-d')}}"
                            class="form-control" disabled/>
                 </div>
             </div>
             <div class="mb-5">
                 <label class="form-label">Date de commission</label>
-                <input name="{{ data3.Date_de_commission | date('Y-m-d')}}"
-                       value="{{ data3.Date_de_commission | date('Y-m-d')}}"
+                <input name="{{ iteration.commissionDate| date('Y-m-d')}}"
+                       value="{{ iteration.commissionDate | date('Y-m-d')}}"
                        class="form-control" disabled/>
             </div>
 
             <h5 class="fw-bold">Session séléctionnée</h5>
             <div class="mt-4 mb-2">
                 <label class="form-label">Date de Session</label>
-                <input name="{{ data1.date | date('Y-m-d')}}"
-                       value="{{ data1.date | date('Y-m-d')}}"
+                <input name="{{ selectedSession.date | date('Y-m-d')}}"
+                       value="{{ selectedSession.date | date('Y-m-d')}}"
                        class="form-control" disabled/>
             </div>
             <div class="mb-2">
                 <label class="form-label">Nombre total de candidats</label>
-                <input name="{{ data1.candidats |length }}"
-                value="{{ data1.candidats |length }}"
+                <input name="{{ selectedSession.candidats |length }}"
+                value="{{ selectedSession.candidats |length }}"
                 class="form-control" disabled/>
             </div>
             <div class="mb-2">
@@ -80,7 +80,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for candidat in data1.candidats %}
+                {% for candidat in selectedSession.candidats %}
                 <tr class="pe-auto">
                         <td>
                             <div class="form-check">

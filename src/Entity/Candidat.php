@@ -33,11 +33,11 @@ class Candidat
     #[ORM\Column(length: 255)]
     private ?string $commentaires = null;
 
-    #[ORM\ManyToOne(inversedBy: 'candidats')]
+    #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'candidats')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Session $session = null;
 
-    #[ORM\ManyToOne(inversedBy: 'candidats')]
+    #[ORM\ManyToOne(cascade: ['persist'],inversedBy: 'candidats')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Genre $genre = null;
 
@@ -47,7 +47,7 @@ class Candidat
     #[ORM\ManyToMany(targetEntity: Motif::class, mappedBy: 'candidats')]
     private Collection $motifs;
 
-    #[ORM\ManyToOne(inversedBy: 'candidats')]
+    #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'candidats')]
     #[ORM\JoinColumn(nullable: true)]
     private ?StatutCandidat $statutCandidat = null;
 

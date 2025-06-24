@@ -13,6 +13,7 @@
 
     <h1 class="px-5 py-3">Résultats de recherches</h1>
     <table class="table mx-5 table-hover">
+
         <thead>
             <tr>
                 <th scope="col">Date de Session</th>
@@ -21,32 +22,36 @@
                 <th></th>
             </tr>
         </thead>
+
         <tbody>
         {% for session in sessions %}
-        <form method="POST" action="/step1">
-        {% if session.date>dateD and session.date<dateF %}
-                {% if session is not empty %}
-                <tr class="pe-auto">
-                    <input name="id" value="{{ session.id }}" hidden/>
+            <form method="POST" action="/step1">
+                {% if session.date > beginningDate and session.date < endingDate %}
+                    {% if session is not empty %}
+                    <tr class="pe-auto">
+                        <input name="id" value="{{ session.id }}" hidden/>
 
-                    <td name="Session_date">{{ session.date | date('Y-m-d') }}</td>
-                    <td>{{ session.candidats| length}}</td>
-                    <td>
-                        <div {{ stimulus_controller('hello') }} class="d-flex flex-row">
-                        <select name="motif_choice" id="{{ session.id }}"
+                        <td name="Session_date">{{ session.date | date('Y-m-d') }}</td>
+                        <td>{{ session.candidats| length}}</td>
+                        <td>
+                            <div {{ stimulus_controller('hello') }} class="d-flex flex-row">
+
+                                <select name="motif_choice" id="{{ session.id }}"
                                     class="form-select" {{ stimulus_action('hello', 'changement', 'change') }}>
+
                                 <option {{ stimulus_target('hello', 'optionSelectedDefault') }}
                                         value="Choisissez votre motif" selected>Choisissez votre motif</option>
 
-                            {% for candidat in session.candidats %}
-                                {% for motif in candidat.motifs %}
-                                    <label hidden name="Libelle">Libelle</label>
-                                    <option {{ stimulus_target('hello', 'optionSelected') }}
-                                        value="{{ motif['libelle'] }} {{ motif['libelle_court'] }}" name="libelle"> {{motif['libelle']}}</option>
+                                {% for candidat in session.candidats %}
+                                    {% for motif in candidat.motifs %}
+                                        <label hidden name="Libelle">Libelle</label>
+                                        <option {{ stimulus_target('hello', 'optionSelected') }}
+                                        value="{{ motif['libelle'] }} {{ motif['libelle_court'] }}"
+                                        name="libelle">{{motif['libelle']}}</option>
+                                    {% endfor %}
                                 {% endfor %}
-                            {% endfor %}
+                                </select>
 
-                            </select>
                             <button type="submit"
                                     class="btn btn-dark mx-5"
                                     {{ stimulus_target('hello','selection') }} disabled>

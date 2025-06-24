@@ -12,18 +12,22 @@
     <div>
         <div class="pt-4 px-5">
             <div class="progress">
-                <div class="progress-bar bg-dark" role="progressbar" style="width:66%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-dark"
+                     role="progressbar"
+                     style="width:66%"
+                     aria-valuenow="15"
+                     aria-valuemin="0"
+                     aria-valuemax="100"></div>
             </div>
         </div>
         <p class="px-5 pt-4 fw-bold text-lg-start">Etape 2</p>
         <h1 class="px-5">Processus d'évaluation</h1>
         <p class="px-5">Chercher votre processus d'évaluation</p>
 
-    {{ form_start(form) }}
-    <div class="d-flex flex-row px-5">
-        <p hidden>{{ app.session.get('id') }}</p>
-        {{ form_row(form.Nom_du_processus_evaluation) }}
-            {{ form_row(form.Suivant) }}
-    </div>
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+            <div class="d-flex flex-row px-5">
+                {{ form_row(form.processName) }}
+                {{ form_row(form.Next) }}
+            </div>
+        {{ form_end(form) }}
 {% endblock %}

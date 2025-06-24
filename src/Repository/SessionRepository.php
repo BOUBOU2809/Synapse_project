@@ -31,13 +31,14 @@ class SessionRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Session
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        public function findSessionsBy(string $date, string $lieu): array
+        {
+            return $this->createQueryBuilder('s')
+                ->andWhere('s.lieu = :lieu and s.date = :date')
+                ->setParameter('lieu', $lieu)
+                ->setParameter('date', $date)
+                ->getQuery()
+                ->getResult()
+            ;
+        }
 }
